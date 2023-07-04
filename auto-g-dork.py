@@ -36,11 +36,13 @@ if __name__ == "__main__":
     dork_type = input("Enter the dork type (1: Single domain, 2: Wildcard domain): ")
 
     if dork_type == "1":
-        domain_dorks = [f"site:{domain} {dork.split(' ', 1)[-1]}" for dork in dorks]
+        domain_dorks = [f"site:{domain} {dork.split('site:', 1)[-1]}" for dork in dorks]
+
 
         search_dorks(domain, domain_dorks)
     elif dork_type == "2":
-        wildcard_domain_dorks = [f"site:.*{domain} {dork.split(' ', 1)[-1]}" for dork in dorks]
+        wildcard_domain_dorks = [f"site:.*{domain} {dork.split('site:', 1)[-1]}" for dork in dorks]
+
         search_dorks(f".*{domain}", wildcard_domain_dorks)
     else:
         print("Invalid dork type. Exiting...")
